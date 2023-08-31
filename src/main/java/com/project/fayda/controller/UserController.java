@@ -6,12 +6,15 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import com.project.fayda.entity.Customer;
 import com.project.fayda.repository.UserRepository;
+import com.project.fayda.service.UserService;
+
+import jakarta.validation.Valid;
 
 @RestController
 public class UserController {
 
     @Autowired
-    UserRepository userRepository;
+    private UserService userService;
 
     @GetMapping("/")
     public String index() {
@@ -27,7 +30,7 @@ public class UserController {
     // }
 
     @PostMapping("/registerUser")
-    public Customer create(@RequestBody Map<String, String> body) {
+    public Customer create(@RequestBody @Valid Map<String, String> body) {
         String full_name = body.get("full_name");
         String full_name_et = body.get("full_name_et");
         String nationality = body.get("nationality");
@@ -39,7 +42,7 @@ public class UserController {
         String woreda = body.get("woreda");
         String kebele = body.get("kebele");
         String phone_number = body.get("phone_number");
-        return userRepository
+        return userService
                 .save(new Customer(full_name, full_name_et, nationality, gender, date_of_birth, region, zone,
                         sub_city, woreda, kebele, phone_number));
     }

@@ -4,22 +4,33 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.validation.constraints.NotEmpty;
 
 @Entity
 public class Customer {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
+    @NotEmpty
     private String full_name;
+    @NotEmpty
     private String full_name_et;
+    @NotEmpty
     private String nationality;
+    @NotEmpty
     private String gender;
+    @NotEmpty
     private String date_of_birth;
+    @NotEmpty
     private String region;
     private String zone;
+    @NotEmpty
     private String sub_city;
+    @NotEmpty
     private String woreda;
+    @NotEmpty
     private String kebele;
+    @NotEmpty
     private String phone_number;
 
     public Customer() {
