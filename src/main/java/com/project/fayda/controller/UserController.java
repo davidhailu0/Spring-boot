@@ -5,7 +5,6 @@ import java.util.Map;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import com.project.fayda.entity.Customer;
-import com.project.fayda.repository.UserRepository;
 import com.project.fayda.service.UserService;
 
 import jakarta.validation.Valid;
